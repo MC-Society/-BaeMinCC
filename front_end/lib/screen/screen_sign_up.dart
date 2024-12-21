@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:front_end/model/user.dart';
+import 'package:front_end/source/test_DB.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -322,6 +324,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               print("NICKNAME : " + nicknameController.text);
                               print("ID : " + idController.text);
                               print("PW : " + passwordCheckController.text);
+
+                              UserList.userList.add(User.fromList({
+                                'nickname': nicknameController.text,
+                                'id': idController.text,
+                                'password': passwordController.text
+                              }));
                             }
                           });
                         },

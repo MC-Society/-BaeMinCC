@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:front_end/model/user.dart';
 import 'package:front_end/screen/screen_sign_up.dart';
+import 'package:front_end/source/test_DB.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -14,12 +15,6 @@ class _SignInScreenState extends State<SignInScreen> {
   bool _loginState = false;
   late TextEditingController idController;
   late TextEditingController passwordController;
-
-  final List<User> _userList = [
-    User.fromList({'nickname': 'test1', 'id': 'qwer', 'password': '123'}),
-    User.fromList({'nickname': 'test2', 'id': 'qwert', 'password': '1234'}),
-    User.fromList({'nickname': 'test3', 'id': 'qwerty', 'password': '12345'}),
-  ];
 
   @override
   void initState() {
@@ -50,9 +45,9 @@ class _SignInScreenState extends State<SignInScreen> {
         ),
       ));
       // 이 부분을 DB연결구조로 수정예정
-      for (int i = 0; i < _userList.length; i++) {
-        if (idController.text == _userList[i].id &&
-            passwordController.text == _userList[i].password) {
+      for (int i = 0; i < UserList.userList.length; i++) {
+        if (idController.text == UserList.userList[i].id &&
+            passwordController.text == UserList.userList[i].password) {
           setState(() {
             _loginState = true;
           });
