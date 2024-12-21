@@ -25,8 +25,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   void dispose() {
-    nicknameController.dispose(); // 컨트롤러 해제
-    passwordController.dispose(); // 패스워드 컨트롤러 해제
+    nicknameController.dispose();
+    passwordController.dispose();
     passwordCheckController.dispose();
     super.dispose();
   }
@@ -49,6 +49,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 passwordController.clear();
                 passwordCheckController.clear();
 
+                isPasswordChecked = false;
                 isSignUpCompleted = false;
                 isNicknameChecked = false;
               });
