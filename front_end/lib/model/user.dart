@@ -2,6 +2,7 @@ class User {
   String nickname;
   String id;
   String password;
+  String? address;
 
   User(this.nickname, this.id, this.password);
 
