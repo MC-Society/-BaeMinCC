@@ -22,7 +22,6 @@ class _SignInScreenState extends State<SignInScreen> {
 
   void _login() {
     if (_formKey.currentState!.validate()) {
-      // 로그인 로직을 여기에 추가
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Row(
           children: [
@@ -35,6 +34,7 @@ class _SignInScreenState extends State<SignInScreen> {
           ],
         ),
       ));
+      // 이 부분을 DB연결구조로 수정예정
       for (int i = 0; i < _userList.length; i++) {
         if (_email == _userList[i].id && _password == _userList[i].password) {
           setState(() {
@@ -42,7 +42,7 @@ class _SignInScreenState extends State<SignInScreen> {
           });
         }
       }
-      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+      ScaffoldMessenger.of(context).hideCurrentSnackBar(); // 스낵바 숨기기기
       if (_loginState) {
         print('로그인 성공@@');
       } else {
