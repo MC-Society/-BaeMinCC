@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:front_end/model/user.dart';
+import 'package:front_end/screen/screen_sign_up.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -125,7 +126,12 @@ class _SignInScreenState extends State<SignInScreen> {
                           style: TextStyle(fontSize: width * 0.034),
                         ),
                         TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SignUpScreen()));
+                            },
                             child: Text(
                               '회원가입',
                               style: TextStyle(fontSize: width * 0.034),

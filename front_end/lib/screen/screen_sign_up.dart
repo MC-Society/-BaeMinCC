@@ -88,6 +88,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             isNicknameChecked = true;
                           }
                         });
+                        Navigator.pop(context);
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
