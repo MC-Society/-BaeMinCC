@@ -83,11 +83,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     width: width * 1.0,
                     child: ElevatedButton(
                       onPressed: () {
-                        setState(() {
-                          if (nicknameController.text.isNotEmpty) {
-                            isNicknameChecked = true;
-                          }
-                        });
                         Navigator.pop(context);
                       },
                       style: ElevatedButton.styleFrom(
