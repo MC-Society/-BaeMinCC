@@ -11,15 +11,29 @@ class SignInScreen extends StatefulWidget {
 
 class _SignInScreenState extends State<SignInScreen> {
   final _formKey = GlobalKey<FormState>();
-  String _email = '';
-  String _password = '';
   bool _loginState = false;
+  late TextEditingController idController;
+  late TextEditingController passwordController;
 
   final List<User> _userList = [
     User.fromList({'nickname': 'test1', 'id': 'qwer', 'password': '123'}),
     User.fromList({'nickname': 'test2', 'id': 'qwert', 'password': '1234'}),
     User.fromList({'nickname': 'test3', 'id': 'qwerty', 'password': '12345'}),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    idController = TextEditingController();
+    passwordController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    idController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   void _login() {
     if (_formKey.currentState!.validate()) {
@@ -37,7 +51,8 @@ class _SignInScreenState extends State<SignInScreen> {
       ));
       // 이 부분을 DB연결구조로 수정예정
       for (int i = 0; i < _userList.length; i++) {
-        if (_email == _userList[i].id && _password == _userList[i].password) {
+        if (idController.text == _userList[i].id &&
+            passwordController.text == _userList[i].password) {
           setState(() {
             _loginState = true;
           });
@@ -46,6 +61,8 @@ class _SignInScreenState extends State<SignInScreen> {
       ScaffoldMessenger.of(context).hideCurrentSnackBar(); // 스낵바 숨기기기
       if (_loginState) {
         print('로그인 성공@@');
+        idController.clear();
+        passwordController.clear();
       } else {
         print('로그인 실패 ㅠㅠ');
       }
@@ -71,20 +88,17 @@ class _SignInScreenState extends State<SignInScreen> {
             child: Column(
               children: [
                 TextFormField(
-                  decoration: InputDecoration(labelText: '이메일'),
+                  controller: idController,
+                  decoration: InputDecoration(labelText: '아이디'),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return '이메일을 입력하세요.';
+                      return '아이디를를 입력하세요.';
                     } else
                       return null;
                   },
-                  onChanged: (value) {
-                    setState(() {
-                      _email = value;
-                    });
-                  },
                 ),
                 TextFormField(
+                  controller: passwordController,
                   decoration: InputDecoration(labelText: '비밀번호'),
                   obscureText: true,
                   validator: (value) {
@@ -92,11 +106,6 @@ class _SignInScreenState extends State<SignInScreen> {
                       return '비밀번호를 입력하세요.';
                     } else
                       return null;
-                  },
-                  onChanged: (value) {
-                    setState(() {
-                      _password = value;
-                    });
                   },
                 ),
                 Container(
@@ -127,17 +136,19 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                         TextButton(
                             onPressed: () {
+                              idController.clear();
+                              passwordController.clear();
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => SignUpScreen()));
                             },
+                            style: TextButton.styleFrom(
+                                padding: EdgeInsets.all(0)),
                             child: Text(
                               '회원가입',
                               style: TextStyle(fontSize: width * 0.034),
-                            ),
-                            style: TextButton.styleFrom(
-                                padding: EdgeInsets.all(0)))
+                            ))
                       ],
                     ),
                   ]),
