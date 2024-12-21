@@ -9,15 +9,19 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   late TextEditingController nicknameController;
+  late TextEditingController idController;
   late TextEditingController passwordController;
   late TextEditingController passwordCheckController;
-  bool isNicknameChecked = false; // 닉네임 입력 여부
+
+  bool isIdChecked = false;
+  bool isNicknameChecked = false;
   bool isPasswordChecked = false;
   bool isSignUpCompleted = false;
 
   @override
   void initState() {
     super.initState();
+    idController = TextEditingController();
     nicknameController = TextEditingController();
     passwordController = TextEditingController();
     passwordCheckController = TextEditingController();
@@ -25,6 +29,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   void dispose() {
+    idController.dispose();
     nicknameController.dispose();
     passwordController.dispose();
     passwordCheckController.dispose();
@@ -48,10 +53,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 nicknameController.clear();
                 passwordController.clear();
                 passwordCheckController.clear();
+                idController.clear();
 
+                isNicknameChecked = false;
+                isIdChecked = false;
                 isPasswordChecked = false;
                 isSignUpCompleted = false;
-                isNicknameChecked = false;
               });
               // Navigator.pop(context); // 뒤로가기 동작
             },
@@ -113,14 +120,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back_ios),
             onPressed: () {
-              print("뒤로가기 버튼");
               setState(() {
                 isNicknameChecked = false;
                 nicknameController.clear();
                 passwordController.clear();
                 passwordCheckController.clear();
               });
-              // Navigator.pop(context); // 뒤로가기 동작
+              Navigator.pop(context); // 뒤로가기 동작
             },
           ),
         ),
@@ -131,20 +137,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
             children: [
               Column(
                 children: [
-                  if (!isNicknameChecked) // 닉네임 입력 여부에 따라 표시
-                    Align(
-                      alignment: Alignment.centerLeft, // 왼쪽 정렬
-                      child: Text(
-                        ' 회원가입\n 해주세용',
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          fontSize: width * 0.1,
-                          fontWeight: FontWeight.w900,
-                          height: 1.1,
-                        ),
+                  Align(
+                    alignment: Alignment.centerLeft, // 왼쪽 정렬
+                    child: Text(
+                      ' 회원가입\n 해주세요',
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                        fontSize: width * 0.1,
+                        fontWeight: FontWeight.w900,
+                        height: 1.1,
                       ),
                     ),
-                  SizedBox(height: height * 0.18),
+                  ),
+                  SizedBox(
+                      height: isNicknameChecked ? height * 0.1 : height * 0.17),
                   TextField(
                     controller: nicknameController,
                     decoration: InputDecoration(
@@ -192,6 +198,37 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   if (isNicknameChecked) // 닉네임 입력 후 패스워드 입력란 추가
                     Column(
                       children: [
+                        TextField(
+                          controller: idController,
+                          decoration: InputDecoration(
+                            border: UnderlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.black), // 기본 아래 줄 색상
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Colors.black), // 비활성화 상태 아래 줄 색상
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Colors.black), // 활성화 상태 아래 줄 색상
+                            ),
+                            labelText: '아이디',
+                            labelStyle: TextStyle(
+                              color: Colors.black, // 라벨 텍스트 색상
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.centerLeft, // 왼쪽 정렬
+                          child: Text(
+                            '영문, 숫자 포함 (8자리 이상)',
+                            textAlign: TextAlign.start,
+                            style: TextStyle(
+                              fontSize: width * 0.031,
+                            ),
+                          ),
+                        ),
                         TextField(
                           controller: passwordController,
                           decoration: InputDecoration(
@@ -282,6 +319,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             }
                             if (isNicknameChecked && isPasswordChecked) {
                               isSignUpCompleted = true;
+                              print("NICKNAME : " + nicknameController.text);
+                              print("ID : " + idController.text);
+                              print("PW : " + passwordCheckController.text);
                             }
                           });
                         },
