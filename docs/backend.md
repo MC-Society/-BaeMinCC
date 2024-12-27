@@ -13,3 +13,9 @@ source {VENV_PATH}/bin/activate     // Linux, Mac
 ```
 deactivate
 ```
+
+# Django DRF 설치
+```
+pip install django
+pip install djangorestframework
+```
