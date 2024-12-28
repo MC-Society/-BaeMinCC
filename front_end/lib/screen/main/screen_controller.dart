@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:front_end/screen/screen_favorite.dart';
-import 'package:front_end/screen/screen_home.dart';
-import 'package:front_end/screen/screen_mypage.dart';
-import 'package:front_end/screen/screen_sign_up.dart';
+import 'package:front_end/screen/main/screen_favorite.dart';
+import 'package:front_end/screen/main/screen_home.dart';
+import 'package:front_end/screen/main/screen_mypage.dart';
+import 'package:front_end/screen/sign/screen_sign_up.dart';
 
 class ControllerScreen extends StatefulWidget {
   const ControllerScreen({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:front_end/screen/screen_mycart.dart';
-import 'package:front_end/screen/screen_myorder.dart';
-import 'package:front_end/screen/screen_myreview.dart';
+import 'package:front_end/screen/mypage/screen_mycart.dart';
+import 'package:front_end/screen/mypage/screen_myorder.dart';
+import 'package:front_end/screen/mypage/screen_myreview.dart';
 import 'package:front_end/source/test_DB.dart';
 import 'package:front_end/widget/mypage_btn.dart';
 
