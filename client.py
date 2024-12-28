@@ -27,10 +27,17 @@ stores_data = [
 
 BASE_URL = 'http://127.0.0.1:8000/api/stores/'
 
+# 데이터 받아오기
 def get_stores():
     response = requests.get(BASE_URL)
     return response.json()
 
+# 데이터1개 받아오기
+def get_store(store_id):
+    response = requests.get(f'{BASE_URL}{store_id}/')
+    return response.json()
+
+# 데이터 추가
 def create_store(name, number, address):
     new_store = {
         "name": name,
@@ -40,6 +47,7 @@ def create_store(name, number, address):
     response = requests.post(BASE_URL, json=new_store)
     return response.json()
 
+# 데이터 업데이트
 def update_store(store_id, name, number, address):
     updated_store = {
         "name": name,
@@ -49,6 +57,7 @@ def update_store(store_id, name, number, address):
     response = requests.put(f'{BASE_URL}{store_id}/', json=updated_store)
     return response.json()
 
+# 데이터 삭제
 def delete_store(store_id):
     response = requests.delete(f'{BASE_URL}{store_id}/')
     return response.status_code  # 204가 반환되면 성공적으로 삭제됨
@@ -57,13 +66,15 @@ def delete_store(store_id):
 if __name__ == "__main__":
     # 새로운 스토어 생성
     # print("새로운 스토어 생성:")
-    # print(create_store("My Store", "123456789", "123 Street Name"))
     # for store in stores_data:
     #     create_store(store["name"], store["number"], store["address"])
 
     # 모든 스토어 가져오기
-    print("모든 스토어:")
-    [print(store["id"]) for store in get_stores()]
+    # print("모든 스토어:")
+    # [print(store) for store in get_stores()]
+
+    # 특정 스토어 가져오기
+    print(get_store(1))
 
     # # 스토어 업데이트
     # print("스토어 업데이트:")
@@ -72,3 +83,4 @@ if __name__ == "__main__":
 
     # # 스토어 삭제
     # print(delete_store(store_id))
+    # [delete_store(store["id"]) for store in get_stores()] # 다지우기
