@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:front_end/model/user.dart';
 import 'package:front_end/screen/screen_sign_up.dart';
 import 'package:front_end/source/test_DB.dart';
 
@@ -163,7 +162,7 @@ class _SignInScreenState extends State<SignInScreen> {
           children: <Widget>[
             Padding(padding: EdgeInsets.only(top: height * 0.32)),
             Align(
-                alignment: Alignment.center, // 왼쪽 정렬
+                alignment: Alignment.center,
                 child: Text(
                   '로그인 성공!',
                   style: TextStyle(
