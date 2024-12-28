@@ -325,7 +325,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               print("ID : " + idController.text);
                               print("PW : " + passwordCheckController.text);
 
-                              UserList.userList.add(User.fromList({
+                              UserList.userList.add(User.signup({
                                 'nickname': nicknameController.text,
                                 'id': idController.text,
                                 'password': passwordController.text
