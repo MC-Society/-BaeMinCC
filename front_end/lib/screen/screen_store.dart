@@ -21,6 +21,7 @@ class _StoreScreenState extends State<StoreScreen> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
+          scrolledUnderElevation: 0,
           leading: IconButton(
             icon: const Icon(Icons.arrow_back_ios),
             onPressed: () {
