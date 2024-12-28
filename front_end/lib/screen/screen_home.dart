@@ -7,16 +7,22 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-Widget foodListButton(String name) {
+Widget foodListButton(BuildContext context, String name) {
   return Column(
     children: [
-      IconButton(onPressed: () {}, icon: Icon(Icons.ice_skating)),
-      Text(name)
+      IconButton(
+        onPressed: () {
+          // Navigator.push(); // 이전 화면으로 돌아가기
+        },
+        icon: Icon(Icons.ice_skating),
+      ),
+      Text(name),
     ],
   );
 }
 
-Widget foodCard(String name, String img, var width, var height) {
+Widget foodCard(
+    BuildContext context, String name, String img, var width, var height) {
   return GestureDetector(
     onTap: () {
       print('Clicked on $name'); // 카드 클릭 시 메시지 출력
@@ -102,35 +108,35 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: EdgeInsets.all(width * 0.05),
                 child: Row(
                   children: [
-                    foodListButton("치킨"),
+                    foodListButton(context, "치킨"),
                     const SizedBox(width: 10), // 버튼 간 간격
-                    foodListButton("피자"),
+                    foodListButton(context, "피자"),
                     const SizedBox(width: 10), // 버튼 간 간격
-                    foodListButton("회"),
+                    foodListButton(context, "회"),
                     const SizedBox(width: 10), // 버튼 간 간격
-                    foodListButton("돈까스"),
+                    foodListButton(context, "돈까스"),
                     const SizedBox(width: 10), // 버튼 간 간격
-                    foodListButton("면"),
+                    foodListButton(context, "면"),
                     const SizedBox(width: 10), // 버튼 간 간격
-                    foodListButton("치킨"),
+                    foodListButton(context, "치킨"),
                     const SizedBox(width: 10), // 버튼 간 간격
-                    foodListButton("피자"),
+                    foodListButton(context, "피자"),
                     const SizedBox(width: 10), // 버튼 간 간격
-                    foodListButton("회"),
+                    foodListButton(context, "회"),
                     const SizedBox(width: 10), // 버튼 간 간격
-                    foodListButton("돈까스"),
+                    foodListButton(context, "돈까스"),
                     const SizedBox(width: 10), // 버튼 간 간격
-                    foodListButton("면"),
+                    foodListButton(context, "면"),
                     const SizedBox(width: 10), // 버튼 간 간격
-                    foodListButton("치킨"),
+                    foodListButton(context, "치킨"),
                     const SizedBox(width: 10), // 버튼 간 간격
-                    foodListButton("피자"),
+                    foodListButton(context, "피자"),
                     const SizedBox(width: 10), // 버튼 간 간격
-                    foodListButton("회"),
+                    foodListButton(context, "회"),
                     const SizedBox(width: 10), // 버튼 간 간격
-                    foodListButton("돈까스"),
+                    foodListButton(context, "돈까스"),
                     const SizedBox(width: 10), // 버튼 간 간격
-                    foodListButton("면"),
+                    foodListButton(context, "면"),
                     const SizedBox(width: 10), // 버튼 간 간격
                   ],
                 ),
@@ -157,21 +163,25 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Row(
                   children: [
                     foodCard(
+                        context,
                         "BHC 치킨",
                         "https://www.bhc.co.kr/upload/bhc/menu/%ED%95%AB%ED%9B%84%EB%9D%BC%EC%9D%B4%EB%93%9C-%EC%8A%A4%ED%8B%B1_410x271.png",
                         width * 0.43,
                         height * 0.15),
                     foodCard(
+                        context,
                         "장군 쭈꾸미",
                         "https://mblogthumb-phinf.pstatic.net/MjAyMjA4MDhfNiAg/MDAxNjU5OTQxMzM0NzU3.8DmHhl9mDLOO4UUqiUPw4QV5JJfRLYcHCbCYXdw-7EUg.oyNWlMqUgt2-lP8HGnhb4o__Ap_dGu_kX09b6uVk7qog.JPEG.studio32/%EC%9E%A5%EA%B5%B0%EC%AD%88%EA%BE%B8%EB%AF%B8_1-1.jpg?type=w800",
                         width * 0.43,
                         height * 0.15),
                     foodCard(
+                        context,
                         "마왕스족발",
                         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRA3bV-2cySVNL8cZLuHkLqtXEelHNb-slRw&s",
                         width * 0.43,
                         height * 0.15),
                     foodCard(
+                        context,
                         "덮덮덮밥",
                         "https://cdn.prod.website-files.com/61f363236c4309b56d1ed855/61fc6799a6f5f664ba3d1569_60c15ac2887a03953825f3eb_5f74fe006351e8d589690c16_Petite%252520Taqueria%2525203.jpeg",
                         width * 0.43,
