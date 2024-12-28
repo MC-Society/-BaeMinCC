@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:front_end/screen/screen_store.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,7 +13,9 @@ Widget foodListButton(BuildContext context, String name) {
     children: [
       IconButton(
         onPressed: () {
-          // Navigator.push(); // 이전 화면으로 돌아가기
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return StoreScreen(category: name);
+          }));
         },
         icon: Icon(Icons.ice_skating),
       ),
@@ -112,7 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     const SizedBox(width: 10), // 버튼 간 간격
                     foodListButton(context, "피자"),
                     const SizedBox(width: 10), // 버튼 간 간격
-                    foodListButton(context, "회"),
+                    foodListButton(context, "초밥"),
                     const SizedBox(width: 10), // 버튼 간 간격
                     foodListButton(context, "돈까스"),
                     const SizedBox(width: 10), // 버튼 간 간격
