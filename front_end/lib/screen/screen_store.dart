@@ -18,14 +18,24 @@ class _StoreScreenState extends State<StoreScreen> {
     double width = screenSize.width;
     double height = screenSize.height;
     return Scaffold(
-        body: SafeArea(
-      child: SingleChildScrollView(
-          child: Center(
-        child: Column(
-          children: mkStoreList(widget.category, screenSize),
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back_ios),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
-      )),
-    ));
+        body: SafeArea(
+          child: SingleChildScrollView(
+              child: Center(
+            child: Column(
+              children: mkStoreList(widget.category, screenSize),
+            ),
+          )),
+        ));
   }
 }
 
