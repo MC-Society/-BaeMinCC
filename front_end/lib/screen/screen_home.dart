@@ -83,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Container(
               alignment: Alignment.centerLeft, // 왼쪽 정렬
               child: Text(
-                '배달의 민족 \n에서 맛있는 음식을 시켜보요zz',
+                '배달의 민족 \n에서 맛있는 음식을 시켜보아요',
                 style: TextStyle(fontSize: 24), // 텍스트 크기 조정
                 textAlign: TextAlign.left, // 왼쪽 정렬
               ),
@@ -137,9 +137,21 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(width * 0.05, width * 0.02,
+                width * 0.05, width * 0.01), // 텍스트 주변 여백
+            child: Container(
+              alignment: Alignment.centerLeft, // 왼쪽 정렬
+              child: Text(
+                '오늘의 추천 메뉴',
+                style: TextStyle(fontSize: 18), // 텍스트 크기 조정
+                textAlign: TextAlign.left, // 왼쪽 정렬
+              ),
+            ),
+          ),
           SizedBox(
             child: Container(
-              margin: EdgeInsets.all(width * 0.05),
+              margin: EdgeInsets.fromLTRB(width * 0.05, 0, width * 0.05, 0),
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
