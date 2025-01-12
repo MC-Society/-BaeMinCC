@@ -28,7 +28,7 @@ Widget foodListButton(BuildContext context, String name, String iconDir) {
   );
 }
 
-Widget foodCard(
+Widget storeCard(
     BuildContext context, String name, String img, var width, var height) {
   return GestureDetector(
     onTap: () {
@@ -45,6 +45,9 @@ Widget foodCard(
             elevation: 4,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
+              side: BorderSide(
+                  color: const Color.fromARGB(255, 211, 211, 211),
+                  width: 1.5), // 테두리 추가
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12), // 카드와 동일한 둥근 모서리
@@ -58,7 +61,7 @@ Widget foodCard(
         Row(
           mainAxisAlignment: MainAxisAlignment.start, // 왼쪽 정렬
           children: [
-            Text(name + " "),
+            Text("  " + name + " "),
             Icon(
               Icons.star_rounded,
               size: height * 0.12,
@@ -74,8 +77,9 @@ Widget foodCard(
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    final double width = MediaQuery.of(context).size.width;
-    final double height = MediaQuery.of(context).size.height;
+    Size screenSize = MediaQuery.of(context).size;
+    double width = screenSize.width;
+    double height = screenSize.height;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -135,32 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
-                  children: [
-                    foodCard(
-                        context,
-                        "BHC 치킨",
-                        "https://www.bhc.co.kr/upload/bhc/menu/%ED%95%AB%ED%9B%84%EB%9D%BC%EC%9D%B4%EB%93%9C-%EC%8A%A4%ED%8B%B1_410x271.png",
-                        width * 0.43,
-                        height * 0.15),
-                    foodCard(
-                        context,
-                        "장군 쭈꾸미",
-                        "https://mblogthumb-phinf.pstatic.net/MjAyMjA4MDhfNiAg/MDAxNjU5OTQxMzM0NzU3.8DmHhl9mDLOO4UUqiUPw4QV5JJfRLYcHCbCYXdw-7EUg.oyNWlMqUgt2-lP8HGnhb4o__Ap_dGu_kX09b6uVk7qog.JPEG.studio32/%EC%9E%A5%EA%B5%B0%EC%AD%88%EA%BE%B8%EB%AF%B8_1-1.jpg?type=w800",
-                        width * 0.43,
-                        height * 0.15),
-                    foodCard(
-                        context,
-                        "마왕스족발",
-                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRA3bV-2cySVNL8cZLuHkLqtXEelHNb-slRw&s",
-                        width * 0.43,
-                        height * 0.15),
-                    foodCard(
-                        context,
-                        "덮덮덮밥",
-                        "https://cdn.prod.website-files.com/61f363236c4309b56d1ed855/61fc6799a6f5f664ba3d1569_60c15ac2887a03953825f3eb_5f74fe006351e8d589690c16_Petite%252520Taqueria%2525203.jpeg",
-                        width * 0.43,
-                        height * 0.15),
-                  ],
+                  children: mkStoreCardList(context, screenSize),
                 ),
               ),
             ),
@@ -183,4 +162,11 @@ List<Widget> mkFoodList(BuildContext context) {
     }
   }
   return foodList;
+}
+
+List<Widget> mkStoreCardList(BuildContext context, Size size) {
+  return RecommendStoreList.storeList
+      .map((store) => storeCard(context, store.name, store.imageURL!,
+          size.width * 0.43, size.height * 0.15))
+      .toList();
 }

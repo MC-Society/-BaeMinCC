@@ -151,3 +151,47 @@ class FoodList {
     Food("초밥", "assets/images/sushi.png")
   ];
 }
+
+class RecommendStoreList {
+  static List<Store> storeList = [
+    Store.fromListWithURL({
+      "name": "버거 천국",
+      "number": "010-1111-2222",
+      "address": "서울특별시 마포구 1번지",
+      "category": ["햄버거"],
+      "imageURL":
+          "https://cdn.enewstoday.co.kr/news/photo/202408/2159316_964697_2857.jpg"
+    }),
+    Store.fromListWithURL({
+      "name": "치킨 사랑",
+      "number": "010-2222-3333",
+      "address": "경기도 성남시 2번지",
+      "category": ["치킨"],
+      "imageURL":
+          "https://www.bhc.co.kr/upload/bhc/menu/%ED%95%AB%ED%9B%84%EB%9D%BC%EC%9D%B4%EB%93%9C-%EC%8A%A4%ED%8B%B1_410x271.png"
+    }),
+    Store.fromListWithURL({
+      "name": "핫도그의 매력",
+      "number": "010-3333-4444",
+      "address": "부산광역시 동래구 3번지",
+      "category": ["핫도그"],
+      "imageURL":
+          "https://img.danawa.com/images/news/images/001255/20230228102105739_2QU0BP63.jpg"
+    }),
+    Store.fromListWithURL({
+      "name": "와플의 정석",
+      "number": "010-4444-5555",
+      "address": "대구광역시 중구 4번지",
+      "category": ["와플"],
+      "imageURL": "https://www.waffleuniv.com/upload/waffle/65b8a8473d9a9.png"
+    }),
+    Store.fromListWithURL({
+      "name": "면 요리 전문점",
+      "number": "010-5555-6666",
+      "address": "광주광역시 서구 5번지",
+      "category": ["면"],
+      "imageURL":
+          "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202108/07/7048115b-6a38-4395-88b0-756e37e14c5c.jpg"
+    }),
+  ];
+}
