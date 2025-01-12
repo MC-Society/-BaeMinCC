@@ -5,7 +5,7 @@ import 'package:front_end/widget/store_btn.dart';
 class StoreScreen extends StatefulWidget {
   String category;
 
-  StoreScreen({required this.category});
+  StoreScreen({super.key, required this.category});
 
   @override
   State<StoreScreen> createState() => _StoreScreenState();
