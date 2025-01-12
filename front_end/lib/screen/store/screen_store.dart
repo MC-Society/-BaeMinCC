@@ -44,13 +44,11 @@ List<Widget> mkStoreList(String category, Size screenSize) {
   List<Widget> storeList = [];
   print(category);
   for (int i = 0; i < StoreList.storeList.length; i++) {
-    StoreList.storeList[i].category.forEach((value) {
-      if (category == value) {
-        storeList.add(StoreBtn(StoreList.storeList[i], screenSize));
-        storeList.add(Padding(
-            padding: EdgeInsets.only(bottom: screenSize.height * 0.03)));
-      }
-    });
+    if (StoreList.storeList[i].category.contains(category)) {
+      storeList.add(StoreBtn(StoreList.storeList[i], screenSize));
+      storeList.add(
+          Padding(padding: EdgeInsets.only(bottom: screenSize.height * 0.03)));
+    }
   }
   return storeList;
 }
