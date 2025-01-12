@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:front_end/model/store.dart';
 
 class StoreReviewScreen extends StatefulWidget {
-  const StoreReviewScreen({super.key});
+  Store store;
+
+  StoreReviewScreen({super.key, required this.store});
 
   @override
   State<StoreReviewScreen> createState() => _StoreReviewScreenState();
@@ -10,6 +13,10 @@ class StoreReviewScreen extends StatefulWidget {
 class _StoreReviewScreenState extends State<StoreReviewScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return SingleChildScrollView(
+      child: Column(
+        children: [Text('추후수정')],
+      ),
+    );
   }
 }

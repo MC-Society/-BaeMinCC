@@ -73,9 +73,9 @@ class _StoreDetailScreenState extends State<StoreDetailScreen>
     return TabBarView(
       controller: tabController,
       children: [
-        StoreMenuScreen(),
-        StoreInfoScreen(),
-        StoreReviewScreen(),
+        StoreMenuScreen(store: widget.store),
+        StoreInfoScreen(store: widget.store),
+        StoreReviewScreen(store: widget.store),
       ],
     );
   }
