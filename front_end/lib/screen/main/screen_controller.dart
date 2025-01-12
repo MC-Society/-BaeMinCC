@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:front_end/screen/main/screen_favorite.dart';
 import 'package:front_end/screen/main/screen_home.dart';
 import 'package:front_end/screen/main/screen_mypage.dart';
+import 'package:front_end/screen/main/screen_review.dart';
 import 'package:front_end/screen/sign/screen_sign_up.dart';
 
 class ControllerScreen extends StatefulWidget {
@@ -15,7 +16,7 @@ class _ControllerScreenState extends State<ControllerScreen> {
   int currentIndex = 0;
   final List<Widget> screens = [
     HomeScreen(),
-    SignUpScreen(),
+    ReviewScreen(),
     MyPageScreen(),
   ];
   @override
