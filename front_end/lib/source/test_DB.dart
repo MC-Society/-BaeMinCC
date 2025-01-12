@@ -1,3 +1,4 @@
+import 'package:front_end/model/food.dart';
 import 'package:front_end/model/store.dart';
 import 'package:front_end/model/user.dart';
 
@@ -135,5 +136,18 @@ class StoreList {
       "address": "대구광역시 북구 10번지",
       "category": ["치킨"]
     })
+  ];
+}
+
+class FoodList {
+  static List<Food> foodList = [
+    Food("햄버거", "assets/images/burger.png"),
+    Food("치킨", "assets/images/chicken.png"),
+    Food("핫도그", "assets/images/hotdog.png"),
+    Food("와플", "assets/images/ice_sandwich.png"),
+    Food("면", "assets/images/noddle.png"),
+    Food("피자", "assets/images/pizza.png"),
+    Food("고기", "assets/images/steak.png"),
+    Food("초밥", "assets/images/sushi.png")
   ];
 }

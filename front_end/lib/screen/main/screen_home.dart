@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:front_end/screen/store/screen_store.dart';
+import 'package:front_end/source/test_DB.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -8,17 +9,20 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-Widget foodListButton(BuildContext context, String name) {
+Widget foodListButton(BuildContext context, String name, String iconDir) {
   return Column(
     children: [
       IconButton(
-        onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return StoreScreen(category: name);
-          }));
-        },
-        icon: Icon(Icons.ice_skating),
-      ),
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return StoreScreen(category: name);
+            }));
+          },
+          icon: Image.asset(
+            iconDir,
+            width: 25,
+            height: 25,
+          )),
       Text(name),
     ],
   );
@@ -109,40 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal, // 수평 스크롤 가능
                 padding: EdgeInsets.all(width * 0.05),
-                child: Row(
-                  children: [
-                    foodListButton(context, "치킨"),
-                    const SizedBox(width: 10), // 버튼 간 간격
-                    foodListButton(context, "피자"),
-                    const SizedBox(width: 10), // 버튼 간 간격
-                    foodListButton(context, "초밥"),
-                    const SizedBox(width: 10), // 버튼 간 간격
-                    foodListButton(context, "돈까스"),
-                    const SizedBox(width: 10), // 버튼 간 간격
-                    foodListButton(context, "면"),
-                    const SizedBox(width: 10), // 버튼 간 간격
-                    foodListButton(context, "치킨"),
-                    const SizedBox(width: 10), // 버튼 간 간격
-                    foodListButton(context, "피자"),
-                    const SizedBox(width: 10), // 버튼 간 간격
-                    foodListButton(context, "회"),
-                    const SizedBox(width: 10), // 버튼 간 간격
-                    foodListButton(context, "돈까스"),
-                    const SizedBox(width: 10), // 버튼 간 간격
-                    foodListButton(context, "면"),
-                    const SizedBox(width: 10), // 버튼 간 간격
-                    foodListButton(context, "치킨"),
-                    const SizedBox(width: 10), // 버튼 간 간격
-                    foodListButton(context, "피자"),
-                    const SizedBox(width: 10), // 버튼 간 간격
-                    foodListButton(context, "회"),
-                    const SizedBox(width: 10), // 버튼 간 간격
-                    foodListButton(context, "돈까스"),
-                    const SizedBox(width: 10), // 버튼 간 간격
-                    foodListButton(context, "면"),
-                    const SizedBox(width: 10), // 버튼 간 간격
-                  ],
-                ),
+                child: Row(children: mkFoodList(context)),
               ),
             ),
           ),
@@ -198,4 +169,18 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+}
+
+List<Widget> mkFoodList(BuildContext context) {
+  List<Widget> foodList = [];
+  for (int i = 0; i < 2 * FoodList.foodList.length - 1; i++) {
+    if (i % 2 == 1) {
+      foodList.add(SizedBox(width: 10));
+    } else {
+      int idx = (i / 2).toInt();
+      foodList.add(foodListButton(context, FoodList.foodList[idx].name,
+          FoodList.foodList[idx].iconDir));
+    }
+  }
+  return foodList;
 }
