@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:front_end/model/store.dart';
+import 'package:front_end/screen/store/screen_store_detail.dart';
 
 class StoreBtn extends StatefulWidget {
   Store store;
@@ -22,7 +23,9 @@ class _StoreBtnState extends State<StoreBtn> {
           border: Border.all(width: 1)),
       child: InkWell(
           onTap: () {
-            print(widget.store.category);
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return StoreDetailScreen(store: widget.store);
+            }));
           },
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
