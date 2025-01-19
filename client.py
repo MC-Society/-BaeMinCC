@@ -65,16 +65,16 @@ def delete_store(store_id):
 # 예시 사용
 if __name__ == "__main__":
     # 새로운 스토어 생성
-    # print("새로운 스토어 생성:")
-    # for store in stores_data:
-    #     create_store(store["name"], store["number"], store["address"])
+     print("새로운 스토어 생성:")
+     for store in stores_data:
+         create_store(store["name"], store["number"], store["address"])
 
     # 모든 스토어 가져오기
     # print("모든 스토어:")
     # [print(store) for store in get_stores()]
 
     # 특정 스토어 가져오기
-    print(get_store(1))
+    #print(get_store(1))
 
     # # 스토어 업데이트
     # print("스토어 업데이트:")
